@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #FAF8F4;
+  --color-ink: #1A1A18;
+  --color-accent: #1F3A5F;
+  --color-border: rgba(26, 26, 24, 0.1);
+
+  --severity-info: #9CA3AF;
+  --severity-monitor: #F59E0B;
+  --severity-repair: #EA580C;
+  --severity-urgent: #DC2626;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #161614;
+    --color-ink: #F5F5F3;
+    --color-accent: #4A6B9C;
+    --color-border: rgba(245, 245, 243, 0.1);
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Instrument Serif', serif;
+  letter-spacing: -0.02em;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Print styles for the Report */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  @page {
+    margin: 2cm;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-3 rounded-[6px] font-medium transition-all duration-200 ease-out
+           bg-[var(--color-accent)] text-white active:scale-[0.98]
+           min-h-[48px] flex items-center justify-center;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-3 rounded-[6px] font-medium transition-all duration-200 ease-out
+           border border-[var(--color-border)] active:scale-[0.98]
+           min-h-[48px] flex items-center justify-center;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-3 rounded-[6px] border border-[var(--color-border)]
+           bg-transparent focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]
+           min-h-[48px];
+  }
+
+  .hairline {
+    @apply border-b border-[var(--color-border)];
+  }
+}
